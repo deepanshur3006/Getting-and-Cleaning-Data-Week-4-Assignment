@@ -82,5 +82,13 @@ final_meansd_data$`Activity Id`<-activity_labels$V2[match(final_meansd_data$`Act
 final_tidy_dataset<-final_meansd_data %>% group_by(`Activity Id`,`Volunteer Id`) %>% 
         arrange(`Activity Id`,.by_group=TRUE) %>% summarise_all(mean)
 
+## The variable names are made more readbale using the gsub fucntion
+names(final_tidy_dataset) <- gsub('^t', 'TimeDomain', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('^f', 'FrequencyDomain', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('Acc', 'Accelerometer', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('Gyro', 'Gyroscope', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('Mag', 'Magnitude', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('BodyBody', 'Body', names(final_tidy_dataset))
+
 ## The final_tidy_dataset.txt is then written to the working directory
 write.table(final_tidy_dataset,'final_tidy_dataset.txt',col.names = TRUE,row.names = FALSE)

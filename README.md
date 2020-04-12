@@ -35,4 +35,6 @@ activity ids are matched with the activity label dataframe and the corresponding
 
 This final dataset is then grouped by activity id, volunteer id and then sorted on the grouped activity id. Finally a mean for all variables is calculated. This will result in 180 rows and 68 columns.
 
+The names of the columns of the final dataset are made more readbale using gsub.
+
 The resulting dataset can then be written to a text file using write.table function.

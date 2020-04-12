@@ -180,6 +180,16 @@ This final dataset is then grouped by activity id, volunteer id and then sorted 
 ## mean of all variables
 final_tidy_dataset<-final_meansd_data %>% group_by(`Activity Id`,`Volunteer Id`) %>% 
         arrange(`Activity Id`,.by_group=TRUE) %>% summarise_all(mean)
+        
+The names of the columns of the final dataset are made more readbale using gsub.
+
+## The variable names are made more readbale using the gsub fucntion
+names(final_tidy_dataset) <- gsub('^t', 'TimeDomain', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('^f', 'FrequencyDomain', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('Acc', 'Accelerometer', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('Gyro', 'Gyroscope', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('Mag', 'Magnitude', names(final_tidy_dataset))
+names(final_tidy_dataset) <- gsub('BodyBody', 'Body', names(final_tidy_dataset))
 
 The resulting dataset can then be written to a text file using write.table function.
 
