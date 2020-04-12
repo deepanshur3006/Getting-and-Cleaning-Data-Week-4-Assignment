@@ -83,4 +83,4 @@ final_tidy_dataset<-final_meansd_data %>% group_by(`Activity Id`,`Volunteer Id`)
         arrange(`Activity Id`,.by_group=TRUE) %>% summarise_all(mean)
 
 ## The final_tidy_dataset.txt is then written to the working directory
-write.table(final_tidy_dataset,'final_tidy_dataset.txt',col.names = TRUE)
+write.table(final_tidy_dataset,'final_tidy_dataset.txt',col.names = TRUE,row.names = FALSE)
